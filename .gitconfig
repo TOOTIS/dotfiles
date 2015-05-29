@@ -1,0 +1,16 @@
+[user]
+	email = mohammed.ahmed.anwer@gmail.com
+	name = Mohamed Anwer
+[push]
+	default = tracking
+[color]
+	ui = true
+[url "git@git.kde.org:"]
+	pushInsteadOf = git://anongit.kde.org/
+	pushInsteadOf = kde:
+[core]
+	excludesfile = ~/.gitignore
+[url "git://anongit.kde.org/"]
+   insteadOf = kde:
+[url "ssh://git@git.kde.org/"]
+   pushInsteadOf = kde:
