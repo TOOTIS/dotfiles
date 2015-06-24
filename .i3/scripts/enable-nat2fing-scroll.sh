@@ -5,6 +5,9 @@ distance=$(xinput --list-props $touchpad_id | grep "Synaptics Scrolling Distance
 echo "Distance: $distance"
 
 if [[ $distance -gt 0 ]]; then
-  echo "not negative"
+  echo "Distance not negative => NEGATING!!" 
   xinput --set-prop $touchpad_id "Synaptics Scrolling Distance" -$distance, -$distance
 fi
+
+echo "Enabling 2 finger Scrolling"
+xinput --set-prop $touchpad_id "Synaptics Two-Finger Scrolling" 1, 1
