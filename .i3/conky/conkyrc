@@ -1,0 +1,61 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address. 
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+# template {"full_text": "", "color":"\#"},
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+[{"full_text": "", "color":"\#0080ff"},
+
+{"full_text": "", "separator": false, "separator_block_width":3, "color":"\#00ff00"},
+{"full_text": "${wireless_essid wlp2s0}", "separator":false, "separator_block_width":3, "color":"\#dca3a3"},
+{"full_text": "${addr wlp2s0} ", "color":"\#83b3a3", "separator":true, "separator_block_width":1},
+
+{"full_text": " ", "separator": false, "separator_block_width":3, "color":"\#00ffff"},
+{"full_text": "${mem}/${memmax} ", "color":"\#83b3a3"},
+
+{"full_text": "", "separator": false, "separator_block_width":3, "color":"\#ffff00"},\
+{"full_text":"${exec xbacklight| awk '{printf("%d\n",$1 + 0.5)}'}% ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
+
+{"full_text": " ", "separator": false, "separator_block_width":3, "color":"\#ff0080"},\
+{"full_text":"${exec amixer get Master | egrep -o "[0-9]+%" | head -n 1} ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
+
+{"full_text": " ", "separator": false, "separator_block_width":3, "color": "red"},\
+{"full_text":"${exec acpi -t | head -n 1 | awk {'print $4'}}°C ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
+
+{"full_text": " ${exec "$HOME/.i3/conky/bat-stat.sh"}", "separator": false, "separator_block_width":3, "color": "\#ff4000"},
+{"full_text": "${battery_percent BAT0}%", "color":"${if_match ${battery_percent BAT0} > 66}\#7f9f7f${else}${if_match ${battery_percent BAT0} < 33}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+
+{"full_text": "  ${time %d/%m/%Y} ", "separator": true, "separator_block_width":3, "color":"\#ffcfaf"},
+{"full_text": "  ${time %I:%M %P}"}
+],
+
