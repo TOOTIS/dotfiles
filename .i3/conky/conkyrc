@@ -50,12 +50,12 @@ TEXT
 {"full_text":"${exec amixer get Master | egrep -o "[0-9]+%" | head -n 1} ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
 
 {"full_text": " ", "separator": false, "separator_block_width":3, "color": "red"},\
-{"full_text":"${exec acpi -t | head -n 1 | awk {'print $4'}}°C ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
+{"full_text":"${acpitemp}°C ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
 
-{"full_text": " ${exec "$HOME/.i3/conky/bat-stat.sh"}", "separator": false, "separator_block_width":3, "color": "\#ff4000"},
-{"full_text": "${battery_percent BAT0}%", "color":"${if_match ${battery_percent BAT0} > 66}\#7f9f7f${else}${if_match ${battery_percent BAT0} < 33}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": " ${exec $HOME/.i3/conky/bat-stat.sh | head -n 1}", "separator": false, "separator_block_width":3, "color": "\#ff4000"},
+{"full_text": "${battery_percent BAT0}%", "color": "${exec $HOME/.i3/conky/bat-stat.sh | tail -1}"},
 
-{"full_text": "  ${time %d/%m/%Y} ", "separator": true, "separator_block_width":3, "color":"\#ffcfaf"},
+{"full_text": "  ${time %a %d/%m/%Y} ", "separator": true, "separator_block_width":3, "color":"\#ffcfaf"},
 {"full_text": "  ${time %I:%M %P}"}
 ],
 
