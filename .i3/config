@@ -81,7 +81,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -164,7 +164,7 @@ bar {
 }
 
 # KB latyout switch
-bindsym $mod+Ctrl+space exec --no-startup-id ~/.i3/scripts/toggle-lang.sh
+bindsym $mod+space exec --no-startup-id ~/.i3/scripts/toggle-lang.sh
 
 # My Shortcuts
 bindsym $mod+Ctrl+w           exec %%ADD YOUR FAVORITE BROWSER HERE%%

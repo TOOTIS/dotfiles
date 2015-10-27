@@ -55,6 +55,9 @@ TEXT
 {"full_text": " ${exec $HOME/.i3/conky/bat-stat.sh | head -n 1}", "separator": false, "separator_block_width":3, "color": "\#ff4000"},
 {"full_text": "${battery_percent BAT0}%", "color": "${exec $HOME/.i3/conky/bat-stat.sh | tail -1}"},
 
+{"full_text": "  ", "separator": false, "separator_block_width":3, "color": "\#726ceb"},\
+{"full_text":"${exec setxkbmap -query | grep layout | awk {'print $2'}} ","color":"\#9a9a9a","separator":true,"separator_block_width":3},\
+
 {"full_text": "  ${time %a %d/%m/%Y} ", "separator": true, "separator_block_width":3, "color":"\#ffcfaf"},
 {"full_text": "  ${time %I:%M %P}"}
 ],
