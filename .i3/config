@@ -1,27 +1,7 @@
-
-# It will not be overwritten, so edit it as you like.
-#
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -87,7 +67,7 @@ bindsym $mod+Ctrl+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -122,8 +102,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
@@ -149,45 +127,50 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        # font pango:Source Sans Pro-10 10 # FAVORITE FONT FOR BAR
-        # status_command ~/.i3/conky/conky-config # UNCOMMENT IF YOU INSTALLED CONKY
-        # status_command i3status
-        # colors {
-        #   background #000000
-        #   statusline #ffffff
-        #
-        #   focused_workspace  #4c7899 #28577 #ffffff
-        #   active_workspace   #333333 #5f676a #ffffff
-        #   inactive_workspace #333333 #222222 #888888
-        #   urgent_workspace   #2f343a #900000 #ffffff
-        # }
+    font pango:Source Sans Pro-10 10
+    status_command ~/.i3/conky/conky-config
+    # status_command i3status
+    colors {
+       separator #666666
+       background #000000
+       statusline #ffffff
+       focused_workspace #551a8b #551a8b #ffffff
+       active_workspace #333333 #5f676a #ffffff
+       inactive_workspace #000000 #000000 #888888
+       urgent_workspace #2f343a #900000 #ffffff
+    }
 }
 
 # KB latyout switch
 bindsym $mod+space exec --no-startup-id ~/.i3/scripts/toggle-lang.sh
 
 # My Shortcuts
-bindsym $mod+Ctrl+w           exec %%ADD YOUR FAVORITE BROWSER HERE%%
-bindsym $mod+Ctrl+f           exec %%ADD YOU FAORITE FILE MANAGER HERE%%
-bindsym $mod+x                move workspace to output VGA1
-bindsym $mod+Shift+x          move workspace to output LVDS1
+bindsym $mod+Ctrl+w           exec chromium 
+bindsym $mod+Ctrl+f           exec nautilus 
+bindsym $mod+x                move workspace to output right
 bindsym $mod+Ctrl+s           exec --no-startup-id amixer set Master toggle
-bindsym Print                 exec --no-startup-id gnome-screenshot # NEEDS TO BE INSTALLED
-bindsym Shift+Print           exec --no-startup-id gnome-screenshot -a # NEEDS TO BE INSTALLED
-bindsym $mod+F6               exec --no-startup-id xbacklight -inc 5 # NEEDS TO BE INSTALLED
-bindsym $mod+F5               exec --no-startup-id xbacklight -dec 5 # NEEDS TO BE INSTALLED
-bindsym $mod+Ctrl+End         exec --no-startup-id ~/.i3/scripts/shutdown-w-conf.sh # Zenity NEED TO BE INSTALLED
+bindsym Print                 exec --no-startup-id gnome-screenshot
+bindsym Shift+Print           exec --no-startup-id gnome-screenshot -a
+bindsym $mod+F6               exec --no-startup-id xbacklight -inc 5
+bindsym $mod+F5               exec --no-startup-id xbacklight -dec 5
+bindsym $mod+Ctrl+End         exec --no-startup-id ~/.i3/scripts/shutdown-w-conf.sh
 bindsym XF86Sleep             exec --no-startup-id (i3lock && systemctl suspend)
-bindsym XF86ScreenSaver       exec --no-startup-id i3lock # NEEDS TO BE INSTALLED
+bindsym XF86ScreenSaver       exec --no-startup-id i3lock
 bindsym XF86AudioLowerVolume  exec --no-startup-id amixer -D pulse sset Master 5%-
 bindsym XF86AudioRaiseVolume  exec --no-startup-id amixer -D pulse sset Master 5%+
 bindsym XF86AudioMute         exec --no-startup-id amixer -D pulse sset Master 0%
 
 # My Startups
-exec --no-startup-id nm-applet # NEEDS TO BE INSTALLED
-exec --no-startup-id pa-applet # NEEDS TO BE INSTALLED FROM AUR
+exec --no-startup-id nm-applet 
+exec --no-startup-id pa-applet
 exec --no-startup-id ~/.i3/scripts/enable-nat2fing-scroll.sh
+exec --no-startup-id ~/.i3/scripts/define-1600x900-res.sh
 exec --no-startup-id xset -b
 exec --no-startup-id (sleep 5; amixer -c 0 set Speaker 100%)
 exec --no-startup-id amixer -c 0 set Master 100%
-exec --no-startup-id feh --bg-fill %%ADD YOUR FAVORITE IMAGE PATH HERE%%
+exec --no-startup-id feh --bg-fill ~/Pictures/bg.png
+
+client.focused #3b1261 #3b1261 #ffffff #662b9c
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused #222222 #222222 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000

@@ -4,17 +4,18 @@ read -s -p "Enter your password: " password
 # Moving dot files in right places
 cp -r "$PWD/.i3" ~
 cp -r "$PWD/terminator" ~/.config
+cp -r "$PWD/fonts" ~/.local/share
 cp "$PWD/.i3status.conf" ~
 cp "$PWD/.gitconfig" ~
 cp "$PWD/.vimrc" ~
-cp "$PWD/fonts" ~/.local/share
+cp "$PWD/bg.png" ~/Pictures
 
 # Caching new fonts
 fc-cache -fv
 
 # Installing important apps
 # TODO: Complete this list
-echo $password | sudo -S pacman --noconfirm -S git tig zsh gvim i3 feh dmenu lxappearance nm-applet terminator conky
+echo $password | sudo -S pacman --noconfirm -S git tig zsh gvim i3 i3lock feh dmenu lxappearance nm-applet terminator conky nm-applet zenity arandr chromium nautilus xorg-xbacklight nodejs npm
 
 # Install vundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
